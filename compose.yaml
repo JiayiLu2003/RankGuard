@@ -1,0 +1,7 @@
+services:
+  rankguard:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      RANKGUARD_ARTIFACT_DIR: /app/artifacts/latest

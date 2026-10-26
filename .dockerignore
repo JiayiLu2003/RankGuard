@@ -1,0 +1,10 @@
+.git
+.github
+.venv
+.codex
+data
+frontend/node_modules
+frontend/dist
+docs/assets/dashboard-mobile.png
+__pycache__
+*.pyc

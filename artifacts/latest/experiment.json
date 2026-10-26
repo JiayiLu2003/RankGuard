@@ -1,0 +1,255 @@
+{
+  "project": "RankGuard",
+  "generated_at": "2026-10-26T06:20:20.146881+00:00",
+  "dataset": {
+    "name": "MovieLens 100K",
+    "source": "GroupLens Research",
+    "source_url": "https://grouplens.org/datasets/movielens/100k/",
+    "license_note": "Dataset is downloaded at runtime and is not redistributed.",
+    "users": 938,
+    "items": 1447,
+    "train_interactions": 54423,
+    "test_interactions": 938,
+    "positive_rating_threshold": 4.0,
+    "split": "Per-user chronological leave-last-one-out",
+    "candidate_protocol": "Full catalog, excluding training interactions",
+    "history_p50": 39.0
+  },
+  "config": {
+    "data_dir": "data",
+    "artifact_dir": "artifacts\\latest",
+    "positive_rating": 4.0,
+    "min_user_positives": 5,
+    "top_k": 10,
+    "embedding_dim": 48,
+    "bpr_epochs": 35,
+    "lightgcn_epochs": 45,
+    "lightgcn_layers": 2,
+    "learning_rate": 0.03,
+    "weight_decay": 1e-05,
+    "bootstrap_samples": 500,
+    "seed": 2026,
+    "device": "cpu"
+  },
+  "models": [
+    {
+      "id": "popularity",
+      "label": "Popularity",
+      "metrics": {
+        "recall@10": 0.058635,
+        "ndcg@10": 0.028966,
+        "mrr@10": 0.020099,
+        "catalog_coverage@10": 0.044229,
+        "novelty@10": 7.491545,
+        "long_tail_share@10": 0.0,
+        "ranking_latency_ms_per_user": 0.005572
+      },
+      "intervals": {
+        "recall@10": [
+          0.044776,
+          0.074627
+        ],
+        "ndcg@10": [
+          0.020829,
+          0.038122
+        ],
+        "mrr@10": [
+          0.013929,
+          0.027341
+        ]
+      },
+      "cohorts": {
+        "short_history": {
+          "users": 263,
+          "recall@10": 0.064639,
+          "ndcg@10": 0.031025
+        },
+        "medium_history": {
+          "users": 317,
+          "recall@10": 0.044164,
+          "ndcg@10": 0.022167
+        },
+        "deep_history": {
+          "users": 358,
+          "recall@10": 0.067039,
+          "ndcg@10": 0.033475
+        }
+      },
+      "training_seconds": 0.000997,
+      "loss_tail": []
+    },
+    {
+      "id": "item_knn",
+      "label": "Item-kNN",
+      "metrics": {
+        "recall@10": 0.088486,
+        "ndcg@10": 0.045677,
+        "mrr@10": 0.032967,
+        "catalog_coverage@10": 0.121631,
+        "novelty@10": 7.90926,
+        "long_tail_share@10": 0.003945,
+        "ranking_latency_ms_per_user": 0.009509
+      },
+      "intervals": {
+        "recall@10": [
+          0.070362,
+          0.106103
+        ],
+        "ndcg@10": [
+          0.035614,
+          0.055035
+        ],
+        "mrr@10": [
+          0.024448,
+          0.043144
+        ]
+      },
+      "cohorts": {
+        "short_history": {
+          "users": 263,
+          "recall@10": 0.148289,
+          "ndcg@10": 0.078689
+        },
+        "medium_history": {
+          "users": 317,
+          "recall@10": 0.07571,
+          "ndcg@10": 0.039203
+        },
+        "deep_history": {
+          "users": 358,
+          "recall@10": 0.055866,
+          "ndcg@10": 0.027158
+        }
+      },
+      "training_seconds": 0.415581,
+      "loss_tail": []
+    },
+    {
+      "id": "bpr",
+      "label": "BPR-MF",
+      "metrics": {
+        "recall@10": 0.084222,
+        "ndcg@10": 0.0408,
+        "mrr@10": 0.027532,
+        "catalog_coverage@10": 0.420871,
+        "novelty@10": 8.644239,
+        "long_tail_share@10": 0.138593,
+        "ranking_latency_ms_per_user": 0.008639
+      },
+      "intervals": {
+        "recall@10": [
+          0.066098,
+          0.103412
+        ],
+        "ndcg@10": [
+          0.031398,
+          0.050388
+        ],
+        "mrr@10": [
+          0.020822,
+          0.034277
+        ]
+      },
+      "cohorts": {
+        "short_history": {
+          "users": 263,
+          "recall@10": 0.129278,
+          "ndcg@10": 0.065888
+        },
+        "medium_history": {
+          "users": 317,
+          "recall@10": 0.085174,
+          "ndcg@10": 0.037062
+        },
+        "deep_history": {
+          "users": 358,
+          "recall@10": 0.050279,
+          "ndcg@10": 0.025679
+        }
+      },
+      "training_seconds": 6.130698,
+      "loss_tail": [
+        0.138587,
+        0.131747,
+        0.13076,
+        0.124643,
+        0.119394,
+        0.116396,
+        0.111703,
+        0.109045
+      ]
+    },
+    {
+      "id": "lightgcn",
+      "label": "LightGCN",
+      "metrics": {
+        "recall@10": 0.086354,
+        "ndcg@10": 0.036721,
+        "mrr@10": 0.022183,
+        "catalog_coverage@10": 0.189357,
+        "novelty@10": 8.092285,
+        "long_tail_share@10": 0.024947,
+        "ranking_latency_ms_per_user": 0.007787
+      },
+      "intervals": {
+        "recall@10": [
+          0.069296,
+          0.106103
+        ],
+        "ndcg@10": [
+          0.028525,
+          0.04527
+        ],
+        "mrr@10": [
+          0.016298,
+          0.028507
+        ]
+      },
+      "cohorts": {
+        "short_history": {
+          "users": 263,
+          "recall@10": 0.102662,
+          "ndcg@10": 0.048566
+        },
+        "medium_history": {
+          "users": 317,
+          "recall@10": 0.091483,
+          "ndcg@10": 0.035889
+        },
+        "deep_history": {
+          "users": 358,
+          "recall@10": 0.069832,
+          "ndcg@10": 0.028757
+        }
+      },
+      "training_seconds": 5.849308,
+      "loss_tail": [
+        0.208317,
+        0.205819,
+        0.203403,
+        0.202439,
+        0.196921,
+        0.197095,
+        0.192277,
+        0.188687
+      ]
+    }
+  ],
+  "release_gate": {
+    "decision": "review",
+    "candidate": "item_knn",
+    "candidate_label": "Item-kNN",
+    "relative_ndcg_lift_vs_popularity": 0.576889,
+    "cohort_regressions": [
+      "deep_history"
+    ],
+    "reason": "Item-kNN leads overall, but regresses for: deep history.",
+    "rule": "Release when NDCG@K lift >= 5% and no history-length cohort regresses vs popularity."
+  },
+  "limitations": [
+    "Offline relevance does not establish online click-through rate or business lift.",
+    "MovieLens is a compact research dataset and does not model production traffic scale.",
+    "The release gate protects three history-length cohorts; it is not a fairness audit.",
+    "Bootstrap intervals quantify user-sampling uncertainty, not distribution shift."
+  ]
+}
